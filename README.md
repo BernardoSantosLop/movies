@@ -30,3 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Life goals proyecto primer parcial
 
 # v0.1 tag
+
+# Protección de Ramas
+![Screenshot_20211215_165848](https://user-images.githubusercontent.com/71346080/146281538-d1b8fddb-23c5-48ec-8a40-01cd53c69609.png)
+
+
