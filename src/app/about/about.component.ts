@@ -9,14 +9,14 @@ import { DataService } from '../data.service';
 })
 export class AboutComponent implements OnInit {
 
-  goals: any;
+  movies: any;
 
   constructor(private route:ActivatedRoute,private router: Router, private _data: DataService) { 
     this.route.params.subscribe(res => console.log(res.id))
   }
 
   ngOnInit(){
-    this._data.goal.subscribe(res => this.goals = res);
+    this._data.movie.subscribe(res => this.movies = res);
   }
 
   sendMeHome(){

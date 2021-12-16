@@ -1,9 +1,15 @@
 <p>
-    Thi is what I'm all about. <a href="" (click)="sendMeHome()"><strong> Take me back </strong></a> 
+    Toda la información de las peliculas la encuentras aqui. <a href="" (click)="sendMeHome()"><strong> REGRESAR AL MENU PRINCIPAL </strong></a> 
 </p>
 
 <ul>
-    <li *ngFor="let goal of goals">
-        {{ goal }}
-    </li>
+    <div class="card col bg-card" >
+        <div class="card-body life-container" *ngFor="let movie of movies; let i = index" (click)="removeItem(i)">
+          <h2 class="card-title"><i>{{ movie.name }}</i></h2>
+          <h5 class="card-subtitle mb-2 text-muted">{{ movie.gender }} ---- {{ movie.release_year }}</h5>
+          <p class="card-text">{{ movie.comment }}</p>
+          <hr>
+        </div>
+        
+      </div>
 </ul>

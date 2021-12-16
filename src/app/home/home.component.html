@@ -1,28 +1,40 @@
 <div class="container color-dark">
     <div class="col">
         <p>
-            Add a bucket list item
+          Registrar peliculas
         </p>
     </div>
     <div class="col">
         <p>
-            Your bucket list ({{ itemCount }})
+            En lista ({{ itemCount }})
         </p>
     </div>
 </div>
-<div class="container color-light" [@goals]="goals.length">
+<div class="container color-light" [@movies]="movies.length">
     <div class="col">
         <p class="sm">
-            Use this form below to add a new bucket list goal.What do you want to do with your life?
+            Por favor completa la información técnica.
         </p>
         <form>
-            <input type="text" class="txt" name="item" placeholder="Life goal ..." [(ngModel)] = "goalText">
+            <input type="text" class="txt" name="item" placeholder="Nombre" [(ngModel)] = "nameText">
+       
+            <input type="text" class="txt" name="item" placeholder="Genero" [(ngModel)] = "genderText">
+        
+            <input type="text" class="txt" name="item" placeholder="Año de estreno" [(ngModel)] = "release_yearText">
+        
+            <input type="text" class="txt" name="item" placeholder="Sinopsis" [(ngModel)] = "commentText">
+
             <input type="submit" class="btn" [value]="btnText" (click)="addItem()">
         </form>
+
     </div>
     <div class="col">
-        <p class="life-container" *ngFor="let goal of goals; let i = index" (click)="removeItem(i)">
-            {{ goal }}
+        <p class="life-container" *ngFor="let movie of movies; let i = index" (click)="removeItem(i)">
+            {{ movie.name }} [ {{ movie.release_year }} ] 
+            
         </p>
+
+       
     </div>
+   
 </div>

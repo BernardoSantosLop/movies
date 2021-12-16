@@ -6,30 +6,37 @@
     padding: .4em 1.3em;
 }
 .color-dark {
-    background: #2885C4;
+    background: #111010;
+    border-radius: 10px;
 }
 .color-light {
-    background: #57b3F1;
+    background: #eb39399a;
+    border-radius: 10px;
 }
 input.txt {
   border: 0;
   padding: 1em;
   width: 80%;
   margin-bottom: 2em;
+  border-radius: 50px;
 }
 input.btn {
     border: 0;
     display: block;
     padding: 1em 3em;
-    background: #A5F883;
-    color: #003A61;
+    background: #252323;
+    color: #ffffff;
     margin-bottom: 1em;
     cursor: pointer;
+    border-radius: 20px;
+    
 }
 
-.life-container {
-    background: #3FA0E1;
+div .life-container {
+    background: #292b29;
     padding: .5em;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 50px;
+    background: linear-gradient(#242222b4, #585151);
 }

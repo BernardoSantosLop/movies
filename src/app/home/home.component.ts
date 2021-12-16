@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 import { DataService } from '../data.service';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations:[
 
-    trigger('goals', [
+    trigger('movies', [
       transition('* => *', [
         query(':enter', style({ opacity: 0 }), {optional: true}),
 
@@ -35,29 +37,76 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
 
   itemCount: number;
-  btnText: string = `Add an Item`;
-  goalText: string = `My first life goal`;
-  goals = [];
+  btnText: string = `Agregar pelicula`;
+  
+
+  nameText: string = ``;
+  genderText: string = ``;
+  release_yearText: string = ``;
+  commentText: string = ``;
+
+
+  movies = [];
   
   constructor(private _data: DataService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     
-    this._data.goal.subscribe(res => this.goals = res);
-    this.itemCount = this.goals.length;
-    this._data.changeGoal(this.goals);
-  }
-  
+
+    this._data.movie.subscribe(res=> this.movies = res);
+    this._data.changeMovies(this.movies);
+
+    this._data.getMovies()
+     .subscribe((data: any) => {
+      //alert(JSON.stringify(data.users));
+
+      this.movies = data.users;
+      this._data.changeMovies(this.movies);
+
+    });setTimeout(() => {
+      this.itemCount = this.movies.length;
+    }, 2100);
+
+
+  } 
+
+
   addItem(){
-    this.goals.push(this.goalText);
-    this.goalText = ``;
-    this.itemCount = this.goals.length;
-    this._data.changeGoal(this.goals);
+
+   
+      var payload = {
+        name : this.nameText,
+        gender : this.genderText,
+        release_year: this.release_yearText,
+        comment: this.commentText
+      }
+  
+  
+      this._data.postMovie(payload)
+      .subscribe((data: any) => {
+     
+        this.movies.push(payload);
+   
+        this.nameText ='';
+        this.genderText ='';
+        this.release_yearText ='';
+        this.commentText ='';
+
+        this.itemCount=this.movies.length;
+        this._data.changeMovies(this.movies);
+  
+     });
+     setTimeout(() => {
+       alert(`¡La pelicula ${this.nameText} fue publicada con exito!`);
+    }, 2500);
+    
   }
 
+
   removeItem(i){
-    this.goals.splice(i,1);
-    this._data.changeGoal(this.goals);
-  }
+    this.movies.splice(i,  1); 
+    this._data.changeMovies(this.movies); 
+     
+  } 
 
 }
